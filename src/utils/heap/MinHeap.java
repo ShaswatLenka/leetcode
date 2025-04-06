@@ -88,7 +88,7 @@ public class MinHeap {
                         minHeap[index] = temp;
                         index = left;
                     } else {
-                        // maxHeap[left] >= maxHeap[right]
+                        // minHeap[left] >= minHeap[right]
                         int temp = minHeap[right];
                         minHeap[right] = minHeap[index];
                         minHeap[index] = temp;
