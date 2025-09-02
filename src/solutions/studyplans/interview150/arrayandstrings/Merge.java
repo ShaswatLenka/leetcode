@@ -2,22 +2,32 @@ package solutions.studyplans.interview150.arrayandstrings;
 
 public class Merge {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if (nums1.length == 1 && nums1[0] != 0) return;
-        if (nums2.length == 0) return;
+        int[] sorted = new int[m+n];
+        int ptr1 = 0, ptr2 = 0;
+        while(ptr1 + ptr2 < m+n) {
+            if (ptr1 == m) {
+               for (int i = ptr2; i<n; i++) {
+                   sorted[i + ptr1] = nums2[i];
+               }
+               break;
+            }
+            if (ptr2 == n) {
+                for (int i = ptr1; i<m; i++) {
+                    sorted[i + ptr2] = nums1[i];
+                }
+                break;
+            }
 
-        for(int i = m; i < m+n; i++) {
-            nums1[i] = nums2[i-m];
-        }
-        int ptr1 = 0;
-        int ptr2 = m;
-        while(ptr1 < ptr2 && ptr1<m+n && ptr2<m+n) {
-            if (nums1[ptr1] > nums1[ptr2]) {
-                int temp = nums1[ptr1];
-                nums1[ptr1] = nums1[ptr2];
-                nums1[ptr2] = temp;
+            if (nums1[ptr1] < nums2[ptr2]) {
+                sorted[ptr1 + ptr2] = nums1[ptr1];
+                ptr1++;
+            } else {
+                sorted[ptr1 + ptr2] = nums2[ptr2];
                 ptr2++;
             }
-            ptr1++;
+        }
+        for (int i = 0; i<m+n; i++) {
+            nums1[i] = sorted[i];
         }
     }
 
