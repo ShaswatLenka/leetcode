@@ -13,6 +13,6 @@ The Manhattan distance between two points p1 and p2 is Manhattan(p1, p2) = |p1.x
 
 public class AssignBikes {
     public int assignBikes(int[][] workers, int[][] bikes) {
-
+       return 0;
     }
 }
